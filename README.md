@@ -14,3 +14,12 @@ Say any of the following:
   * cbc news
   * tell me cbc news
   * listen to cbc news
+
+NOTE:
+
+Apparently CBC News Radio pulls the last "latest news" URL at the top of
+the hour and then there is a few minutes delay before the new URL
+appears.  This means that if you use this skill at the top of the hour
+it may fail if the new URL isn't available.  This is *not* a bug with
+this skill...  it's just the way Fox News Radio does things.
+
