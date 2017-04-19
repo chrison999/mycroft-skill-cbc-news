@@ -1,19 +1,14 @@
-# Copyright 2016 Mycroft AI, Inc.
+# mycroft-skill-cbc-news
 #
-# This file is part of Mycroft Core.
+# A Mycroft skill to play the latest cbc news
 #
-# Mycroft Core is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# Based on the daily_meditation skill by kfezer
 #
-# Mycroft Core is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+# Modified by chrison999
 #
+# This skill is licensed under the GNU General Public License v3.
 # You should have received a copy of the GNU General Public License
-# along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
+# along with this skill.  If not, see <http://www.gnu.org/licenses/>.
 
 
 import feedparser
@@ -34,7 +29,6 @@ LOGGER = getLogger(__name__)
 class CBCNewsSkill(MycroftSkill):
     def __init__(self):
         super(CBCNewsSkill, self).__init__(name="CBCNewsSkill")
-#        self.url_rss = self.config['url_rss']
         self.process = None
 
     def initialize(self):
@@ -44,16 +38,10 @@ class CBCNewsSkill(MycroftSkill):
 
     def handle_intent(self, message):
         try:
-#            data = feedparser.parse("curl -s http://feeds.foxnewsradio.com/FoxNewsRadio |"
-#                                    "grep '<link>http://feeds' |"
-#                                    "sed -e 's/<link>//g' -e 's/<\/link>//g' -e 's/\t//g'")
 
             data = feedparser.parse("http://www.cbc.ca/podcasting/includes/hourlynews.xml")
-#            data = feedparser.parse("http://www.intouchcanada.org/listen/podcast/daily-devotion")
             self.speak_dialog('cbc.news')
             time.sleep(5)
-
-#            self.process = play_mp3(data)
 
             self.process = play_mp3(
                 re.sub(
